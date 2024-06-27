@@ -10,6 +10,7 @@ import (
 	"github.com/fleetdm/fleet/v4/server/mock"
 	"github.com/fleetdm/fleet/v4/server/ptr"
 	"github.com/fleetdm/fleet/v4/server/test"
+	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
@@ -28,6 +29,11 @@ func TestGetFleetDesktopSummary(t *testing.T) {
 		svc, ctx := newTestService(t, ds, nil, nil, &TestServerOpts{License: license, SkipCreateTestUsers: true})
 		ds.FailingPoliciesCountFunc = func(ctx context.Context, host *fleet.Host) (uint, error) {
 			return uint(1), nil
+		}
+		const expectedPlatform = "darwin"
+		ds.HasSelfServiceSoftwareInstallersFunc = func(ctx context.Context, platform string, teamID *uint) (bool, error) {
+			assert.Equal(t, expectedPlatform, platform)
+			return true, nil
 		}
 
 		cases := []struct {
@@ -117,6 +123,7 @@ func TestGetFleetDesktopSummary(t *testing.T) {
 			ctx := test.HostContext(ctx, &fleet.Host{
 				OsqueryHostID:      ptr.String("test"),
 				DEPAssignedToFleet: &c.depAssigned,
+				Platform:           expectedPlatform,
 				MDMInfo: &fleet.HostMDM{
 					IsServer:               false,
 					InstalledFromDep:       true,
@@ -128,6 +135,7 @@ func TestGetFleetDesktopSummary(t *testing.T) {
 			require.NoError(t, err)
 			require.Equal(t, c.out, sum.Notifications, fmt.Sprintf("enabled_and_configured: %t | macos_migration.enable: %t", c.mdm.EnabledAndConfigured, c.mdm.MacOSMigration.Enable))
 			require.EqualValues(t, 1, *sum.FailingPolicies)
+			assert.Equal(t, ptr.Bool(true), sum.SelfService)
 		}
 
 	})
@@ -139,7 +147,9 @@ func TestGetFleetDesktopSummary(t *testing.T) {
 		ds.FailingPoliciesCountFunc = func(ctx context.Context, host *fleet.Host) (uint, error) {
 			return uint(1), nil
 		}
-
+		ds.HasSelfServiceSoftwareInstallersFunc = func(ctx context.Context, platform string, teamID *uint) (bool, error) {
+			return true, nil
+		}
 		cases := []struct {
 			mdm         fleet.MDM
 			depAssigned bool
@@ -252,6 +262,9 @@ func TestGetFleetDesktopSummary(t *testing.T) {
 
 		ds.IsHostConnectedToFleetMDMFunc = func(ctx context.Context, host *fleet.Host) (bool, error) {
 			return host.MDMInfo != nil && host.MDMInfo.Enrolled == true && host.MDMInfo.Name == fleet.WellKnownMDMFleet, nil
+		}
+		ds.HasSelfServiceSoftwareInstallersFunc = func(ctx context.Context, platform string, teamID *uint) (bool, error) {
+			return false, nil
 		}
 
 		cases := []struct {

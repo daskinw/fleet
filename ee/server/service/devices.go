@@ -99,7 +99,7 @@ func (svc *Service) GetFleetDesktopSummary(ctx context.Context) (fleet.DesktopSu
 		return sum, err
 	}
 
-	hasSelfService, err := svc.ds.HasSelfServiceSoftwareInstallers(ctx, host.TeamID)
+	hasSelfService, err := svc.ds.HasSelfServiceSoftwareInstallers(ctx, host.Platform, host.TeamID)
 	if err != nil {
 		return sum, ctxerr.Wrap(ctx, err, "retrieving self service software installers")
 	}
