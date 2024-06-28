@@ -1,45 +1,17 @@
 # Table of contents
 
-* [Simulate slow network](README.md)
-* [Testing and local development](testing-and-local-development.md)
-* [Troubleshooting live queries](troubleshooting-live-queries.md)
-* [Vulnerability processing](vulnerability-processing.md)
-* [Fleetd development and release strategy](fleetd-development-and-release-strategy.md)
-* [High level architecture](high-level-architecture.md)
-* [Provide end user email address w/o relying on end user](set-up-custom-end-user-email.md)
-* [windows-mdm-glossary-and-protocol](windows-mdm-glossary-and-protocol.md)
-* [Reference architectures](reference-architectures.md)
-* [Upgrading Fleet](upgrading-fleet.md)
-* [Deploy Fleet](deploy-fleet.md)
-* [Single sign-on (SSO)](single-sign-on-sso.md)
-* [Get started](get-started.md)
-* [Anatomy](anatomy.md)
-* [Tutorials and guides](tutorials-and-guides.md)
-* [Why Fleet](why-fleet.md)
-* [Audit logs](audit-logs.md)
-* [CIS Benchmarks](cis-benchmarks.md)
-* [Automations](automations.md)
-* [Fleet Desktop](fleet-desktop.md)
-* [Learn how to use Fleet](learn-how-to-use-fleet.md)
-* [Log destinations](log-destinations.md)
-* [OS updates](mdm-os-updates.md)
-* [Commands](mdm-commands.md)
-* [Custom OS settings](mdm-custom-os-settings.md)
-* [Disk encryption](mdm-disk-encryption.md)
-* [macOS setup experience](mdm-macos-setup-experience.md)
-* [Migration guide](mdm-migration-guide.md)
-* [Setup](mdm-setup.md)
-* [Osquery children processes](osquery-process.md)
-* [Puppet module](puppet-module.md)
-
 ## Get Started
 
 * [Fleet documentation](get-started-1/readme.md)
+* [Get started](get-started.md)
 
 ## Deploy
 
 * [Deploy](deploy/deploy.md)
 * [\_kubernetes](deploy/\_kubernetes.md)
+* [Testing and local development](testing-and-local-development.md)
+* [Deploy Fleet](deploy-fleet.md)
+
 
 ## Using Fleet
 
@@ -68,6 +40,35 @@
 * [Understanding host vitals](using-fleet/understanding-host-vitals.md)
 * [Supported host operating systems](using-fleet/supported-host-operating-systems.md)
 * [Supported browsers](using-fleet/supported-browsers.md)
+* [Simulate slow network](README.md)
+* [Troubleshooting live queries](troubleshooting-live-queries.md)
+* [Vulnerability processing](vulnerability-processing.md)
+* [Fleetd development and release strategy](fleetd-development-and-release-strategy.md)
+* [High level architecture](high-level-architecture.md)
+* [Provide end user email address w/o relying on end user](set-up-custom-end-user-email.md)
+* [windows-mdm-glossary-and-protocol](windows-mdm-glossary-and-protocol.md)
+* [Reference architectures](reference-architectures.md)
+* [Upgrading Fleet](upgrading-fleet.md)
+* [Single sign-on (SSO)](single-sign-on-sso.md)
+* [Anatomy](anatomy.md)
+* [Tutorials and guides](tutorials-and-guides.md)
+* [Why Fleet](why-fleet.md)
+* [Audit logs](audit-logs.md)
+* [CIS Benchmarks](cis-benchmarks.md)
+* [Automations](automations.md)
+* [Fleet Desktop](fleet-desktop.md)
+* [Learn how to use Fleet](learn-how-to-use-fleet.md)
+* [Log destinations](log-destinations.md)
+* [OS updates](mdm-os-updates.md)
+* [Commands](mdm-commands.md)
+* [Custom OS settings](mdm-custom-os-settings.md)
+* [Disk encryption](mdm-disk-encryption.md)
+* [macOS setup experience](mdm-macos-setup-experience.md)
+* [Migration guide](mdm-migration-guide.md)
+* [Setup](mdm-setup.md)
+* [Osquery children processes](osquery-process.md)
+* [Puppet module](puppet-module.md)
+
 
 ## configuration
 
