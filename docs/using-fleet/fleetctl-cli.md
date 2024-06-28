@@ -4,10 +4,6 @@ fleetctl (pronounced "Fleet control") is a CLI tool for managing Fleet from the 
 
 fleetctl also provides a quick way to work with all the data exposed by Fleet without having to use the Fleet UI or work directly with the Fleet API.
 
-<div purpose="embedded-content">
-   <iframe src="https://www.youtube.com/embed/ERbknt6w8eg" allowfullscreen></iframe>
-</div>
-
 ## Installing fleetctl
 
 Install fleetctl with npm or download the binary from [GitHub](https://github.com/fleetdm/fleet/releases).
@@ -26,9 +22,7 @@ npm install -g fleetctl@latest
 
 ## Usage
 
-
 ### Available commands
-
 
 Much of the functionality available in the Fleet UI is also available in `fleetctl`. You can run queries, add and remove users, generate Fleet's agent (fleetd) to add new hosts, get information about existing hosts, and more!
 
@@ -68,7 +62,7 @@ OPTIONS:
 
 ## Authentication
 
-This section walks you through authentication, assuming you already have a running Fleet instance. To learn how to set up new Fleet instance, check out the [Deploy](https://fleetdm.com/docs/deploy/introduction) section or [Building Fleet locally](https://github.com/fleetdm/fleet/blob/main/docs/Contributing/Building-Fleet.md) docs. 
+This section walks you through authentication, assuming you already have a running Fleet instance. To learn how to set up new Fleet instance, check out the [Deploy](https://fleetdm.com/docs/deploy/introduction) section or [Building Fleet locally](https://github.com/fleetdm/fleet/blob/main/docs/Contributing/Building-Fleet.md) docs.
 
 ### Login
 
@@ -98,9 +92,10 @@ Once your local context is configured, you can use `fleetctl` normally.
 Users that authenticate to Fleet via SSO should retrieve their API token from the UI and set it manually in their `fleetctl` configuration (instead of logging in via `fleetctl login`).
 
 **Fleet UI:**
+
 1. Go to the **My account** page (https://fleet.example.com/profile)
 2. Select the **Get API token** button to bring up a modal with the API token.
-3. Set the API token in the `~/.fleet/config` file. 
+3. Set the API token in the `~/.fleet/config` file.
 
 ```yaml
 contexts:
@@ -114,13 +109,13 @@ The token can also be set with `fleetctl config set --token`, but this may leak 
 
 ## Using fleetctl with an API-only user
 
-When running automated workflows using the Fleet API, we recommend an API-only user's API key rather than the API key of a regular user. A regular user's API key expires frequently for security purposes, requiring routine updates. Meanwhile, an API-only user's key does not expire.   
+When running automated workflows using the Fleet API, we recommend an API-only user's API key rather than the API key of a regular user. A regular user's API key expires frequently for security purposes, requiring routine updates. Meanwhile, an API-only user's key does not expire.
 
 An API-only user does not have access to the Fleet UI. Instead, it's only purpose is to interact with the API programmatically or from fleetctl.
 
 ### Create API-only user
 
-Before creating the API-only user, log in to `fleetctl` as an admin.  See [authentication](https://#authentication) above for details.
+Before creating the API-only user, log in to `fleetctl` as an admin. See [authentication](../Using%20Fleet/https:/#authentication) above for details.
 
 To create your new API-only user, use `fleetctl user create`:
 
@@ -145,6 +140,7 @@ fleetctl user create --name "API User" --email api@example.com --password temp@p
 #### Changing permissions
 
 To change roles of a current user, log into the Fleet UI as an admin and navigate to **Settings > Users**.
+
 > Suggestion: To disable/enable a user's access to the UI (converting a regular user to an API-only user or vice versa), create a new user.
 
 ### Get API token for API-only user
@@ -186,7 +182,7 @@ fleetctl config set --address https://dogfood.fleetdm.com --context api
 [+] Set the address config key to "https://dogfood.fleetdm.com" in the "api" context
 ```
 
-From there on, you can use  the `--context api` flag whenever you need to use the API-only user's identity, rather than logging in and out to switch accounts:
+From there on, you can use the `--context api` flag whenever you need to use the API-only user's identity, rather than logging in and out to switch accounts:
 
 ```sh
 fleetctl login --context admin
@@ -214,10 +210,6 @@ fleetctl debug archive
 
 This will generate a `tar.gz` file with:
 
-- `prof` archives that can be inspected via `go tools pprof <archive_name_here>`.
-- A file containing a set of all the errors that happened in the server during the interval of time defined by the [logging_error_retention_period](https://fleetdm.com/docs/deploying/configuration#logging-error-retention-period) configuration.
-- Files containing database-specific information.
-
-<meta name="pageOrderInSection" value="300">
-<meta name="description" value="Read about fleetctl, a CLI tool for managing Fleet and osquery configurations, running queries, generating Fleet's agent (fleetd) and more.">
-<meta name="navSection" value="The basics">
+* `prof` archives that can be inspected via `go tools pprof <archive_name_here>`.
+* A file containing a set of all the errors that happened in the server during the interval of time defined by the [logging\_error\_retention\_period](https://fleetdm.com/docs/deploying/configuration#logging-error-retention-period) configuration.
+* Files containing database-specific information.
